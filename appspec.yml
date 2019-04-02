@@ -15,4 +15,11 @@ hooks:
     - location: scripts/stop_server
       timeout: 300
       runas: root
-
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: <TASK_DEFINITION>
+        LoadBalancerInfo:
+          ContainerName: "sample-website"
+          ContainerPort: 80
